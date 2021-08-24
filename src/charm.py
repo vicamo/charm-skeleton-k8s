@@ -29,7 +29,9 @@ class CharmSkeletonK8SCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.framework.observe(self.on.httpbin_pebble_ready, self._on_httpbin_pebble_ready)
+        self.framework.observe(
+            self.on.httpbin_pebble_ready, self._on_httpbin_pebble_ready
+        )
         self.framework.observe(self.on.config_changed, self._on_config_changed)
         self.framework.observe(self.on.fortune_action, self._on_fortune_action)
         self._stored.set_default(things=[])
@@ -97,7 +99,9 @@ class CharmSkeletonK8SCharm(CharmBase):
         if fail:
             event.fail(fail)
         else:
-            event.set_results({"fortune": "A bug in the code is worth two in the documentation."})
+            event.set_results(
+                {"fortune": "A bug in the code is worth two in the documentation."}
+            )
 
 
 if __name__ == "__main__":
